@@ -1,21 +1,31 @@
-// PigDice.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include "pch.h"
 #include <iostream>
+#include <cstdlib>
 
-int main()
-{
-    std::cout << "Hello World!\n"; 
+int roll_die() {
+	return rand() % 6 + 1;
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+int play() {
+	int score = 0;
+	int roll;
+	while((roll = roll_die()) != 1) {
+		score += roll;
+	}
+	return score;
+}
+int main() {
+	int world_record = 606;
+	int high_score = 0;
+	int games = 0;
+	while(high_score <= world_record) {
+		int score = play();
+		games++;
+		if(score > high_score) {
+			high_score = score;
+			std::cout << "WR is " << world_record 
+				<< ", new HS is " << high_score
+				<< " on game " << games << std::endl;
+		}
+	}
+	std::cout << "New WR is " << high_score << std::endl;
+}
