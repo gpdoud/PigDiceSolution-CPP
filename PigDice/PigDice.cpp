@@ -23,7 +23,7 @@ int play() {
 }
 int main() {
 //	srand(time(NULL));
-	int world_record = 700;
+	int world_record = 660;
 	int high_score = 0;
 	unsigned long long games = 0;
 	while(high_score <= world_record) {
@@ -31,6 +31,7 @@ int main() {
 		games++;
 		if(score > high_score) {
 			high_score = score;
+            std::cout.imbue(std::locale(""));
 			std::cout << "WR is " << world_record 
 				<< ", new HS is " << std::setw(3) << std::right << high_score
 				<< " on game " << std::setw(16) << std::right << games << std::endl;
