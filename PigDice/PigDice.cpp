@@ -26,12 +26,12 @@ int main() {
 	int world_record = 713;
 	int high_score = 0;
 	unsigned long long games = 0;
+    std::cout.imbue(std::locale(""));
 	while(high_score <= world_record) {
 		int score = play();
 		games++;
 		if(score > high_score) {
 			high_score = score;
-            std::cout.imbue(std::locale(""));
 			std::cout << std::endl << "WR: " << world_record 
 				<< ", HS: " << std::setw(3) << std::right << high_score
 				<< " GM: " << std::setw(18) << std::right << games << " ";
